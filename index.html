@@ -1,0 +1,451 @@
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/beercss@1.2.8/dist/cdn/beer.min.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/beercss@1.2.8/dist/cdn/beer.min.js"></script>
+<script src=""></script>
+
+
+
+
+
+
+
+</head>
+
+
+<body>
+
+ <!-- app --> 
+<div class="container" id="app">
+ 
+  <div class="menu left large flat medium-device large-device">
+    <div class="large-space"></div>
+    <div class="large-space"></div>
+    <a @click="redirect('/youtube')" :class="{ active: url == '/youtube' }">
+    <i>home</i>
+    <div>Home</div>
+    </a>
+    <a @click="redirect('/youtube/whats-hot')" :class="{ active: url == '/youtube/whats-hot' }">
+    <i>whatshot</i>
+    <div>What's hot</div>
+    </a>
+    <a @click="redirect('/youtube/subscriptions')" :class="{ active: url == '/youtube/subscriptions' }">
+    <i>subscriptions</i>
+    <div>Subscript</div>
+    </a>
+    <a @click="redirect('/youtube/library')" :class="{ active: url == '/youtube/library' }">
+    <i>video_library</i>
+    <div>Library</div>
+    </a>
+    <a @click="updateTheme()">
+    <i>brightness_medium</i>
+    <div>Theme</div>
+    </a>
+  </div>
+  
+  <div class="menu bottom border small-device">
+   <a @click="redirect('/youtube')" :class="{ active: url == '/youtube' }">
+   <i>home</i>
+   <div>Home</div>
+   </a>
+   <a @click="redirect('/youtube/explore')" :class="{ active: url == '/youtube/explore' }">
+   <i>explore</i>
+   <div>Explore</div>
+   </a>
+   <a class="button circle small border" data-ui="#modal-add">
+   <i>add</i>
+   </a>
+   <a @click="redirect('/youtube/library')" :class="{ active: url == '/youtube/library' }">
+   <i>video_library</i>
+   <div>Library</div>
+   </a>
+   <a @click="updateTheme()">
+   <i>brightness_medium</i>
+   <div>Theme</div>
+   </a>
+   </div>
+   
+  <div class="menu top border large">
+    <div class="row no-wrap middle-align">
+      <div class="col">
+        <nav class="padding">
+          <button class="none color-2-text medium-device large-device" data-ui="#modal-expanded">
+           <i>menu</i>
+           </button>
+           <a>
+            <img v-show="theme == 'is-youtube-light'" src="https://raw.githack.com/beercss/beercss/v1.1.0/dist/youtube-light.png"/><img v-show="theme == 'is-youtube-dark'" src="https://raw.githack.com/beercss/beercss/v1.1.0/dist/youtube-dark.png"/>
+            </a>
+        </nav>
+      </div>
+      <div class="col">
+        <div class="field round sufix prefix small no-margin medium-device large-device">
+         <i class="front">search</i>
+         <input class="white black-text" type="text"/>
+         <i class="front">mic</i>
+        </div>
+      </div>
+      <div class="col">
+        <nav class="right-align">
+         
+          <button class="none color-2-text small-device" data-ui="#modal-search">
+           <i>search</i>
+           </button>
+           
+          <button class="none color-2-text medium-device large-device" data-ui="#dropdown-add">
+           <i>video_call</i>
+            <div class="dropdown left no-wrap" id="dropdown-add" data-ui="#dropdown-add">
+             <a class="row no-wrap">
+                <div class="col min"><i>upload</i></div>
+                <div class="col">Send a video</div>
+             </a>
+                <a class="row no-wrap">
+                <div class="col min"><i>sensors</i></div>
+                <div class="col">Broadcast live</div>
+             </a>
+             </div>
+          </button>
+          
+          <button class="none color-2-text medium-device large-device" data-ui="#dropdown-apps">
+           <i>apps</i>
+            <div class="dropdown left no-wrap" id="dropdown-apps" data-ui="#dropdown-apps">
+             <a class="row no-wrap">
+                <div class="col min"><img src="https://raw.githack.com/beercss/beercss/v1.1.0/dist/youtube.png"/></div>
+                <div class="col">Youtube TV</div>
+                </a>
+              <div class="divider"></div>
+              <a class="row no-wrap">
+                <div class="col min"><img src="https://raw.githack.com/beercss/beercss/v1.1.0/dist/youtube.png"/></div>
+                <div class="col">Youtube Music</div>
+                </a>
+                <a class="row no-wrap">
+                <div class="col min"><img src="https://raw.githack.com/beercss/beercss/v1.1.0/dist/youtube.png"/></div>
+                <div class="col">Youtube Kids</div>
+                </a>
+            </div>
+          </button>
+          
+          <button class="none color-2-text" data-ui="#modal-notifications">
+           <i>notifications</i></button>
+           <a href="https://beercss.com" target="_blank"><img class="small circle" src="https://raw.githack.com/beercss/beercss/v1.1.0/dist/favicon.png"/></a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  
+  <div class="modal right" id="modal-notifications">
+    <div class="row no-wrap middle-align">
+      <div class="col"><h5 class="no-margin">Notifications</h5></div>
+      <div class="col min">
+       <a data-ui="#modal-notifications"><i>close</i></a>
+      </div>
+    </div>
+    <p>No new notifications here</p>
+  </div>
+  
+  <div class="modal left small" id="modal-expanded">
+    <nav>
+     <a data-ui="#modal-expanded"><i>menu</i></a>
+     <a>
+      <img v-show="theme == 'is-youtube-light'" src="https://raw.githack.com/beercss/beercss/v1.1.0/dist/youtube-light.png"/>
+     <img v-show="theme == 'is-youtube-dark'" src="https://raw.githack.com/beercss/beercss/v1.1.0/dist/youtube-dark.png"/>
+     </a>
+     </nav>
+    <div class="medium-space"></div>
+    <a class="row no-wrap" data-ui="#modal-expanded" @click="redirect('/youtube')">
+      <div class="col min"><i>home</i></div>
+      <div class="col">Home</div>
+    </a>
+    <a class="row no-wrap" data-ui="#modal-expanded" @click="redirect('/youtube/whats-hot')">
+      <div class="col min"><i>whatshot</i></div>
+      <div class="col">What's hot</div>
+    </a>
+    <a class="row no-wrap" data-ui="#modal-expanded" @click="redirect('/youtube/subscriptions')">
+      <div class="col min"><i>subscriptions</i></div>
+      <div class="col">Subscript</div>
+    </a>
+    <a class="row no-wrap" data-ui="#modal-expanded" @click="redirect('/youtube/library')">
+      <div class="col min"><i>video_library</i></div>
+      <div class="col">Library</div></a>
+    <a class="row no-wrap" @click="updateTheme()">
+      <div class="col min"><i>brightness_medium</i></div>
+      <div class="col">Theme</div>
+    </a>
+    <div class="large-divider"></div>
+    <a class="row no-wrap" data-ui="#modal-expanded">
+      <div class="col min"><i>history</i></div>
+      <div class="col">History</div>
+    </a>
+    <a class="row no-wrap" data-ui="#modal-expanded">
+      <div class="col min"><i>slideshow</i></div>
+      <div class="col">Your videos</div>
+    </a>
+    <a class="row no-wrap" data-ui="#modal-expanded">
+      <div class="col min"><i>playlist_play</i></div>
+      <div class="col">Your albuns</div>
+    </a>
+    <a class="row no-wrap" data-ui="#modal-expanded">
+      <div class="col min"><i>watch_later</i></div>
+      <div class="col">Watch later</div>
+    </a>
+  </div>
+  <div class="modal bottom round" id="modal-add">
+    <div class="row no-wrap middle-align">
+     <div class="col"><h5 class="no-margin">New</h5></div>
+     <div class="col right-align"><a data-ui="#modal-add"><i>close</i></a></div>
+    </div>
+   <a class="row no-wrap">
+      <div class="col min"><i>upload</i></div>
+      <div class="col"><span>Send a video</span></div>
+   </a>
+   <a class="row no-wrap">
+      <div class="col min"><i>sensors</i></div>
+      <div class="col"><span>Broadcast live</span></div></a>
+  </div>
+  
+  <div class="modal top transparent flat" id="modal-search">
+    <div class="field round sufix prefix small no-margin">
+     <i class="front">search</i>
+      <input class="white black-text" type="text"/>
+      <i class="front">mic</i>
+    </div>
+  </div>
+  
+  <div class="page right active" v-show="url == '/youtube'">
+   
+    <nav class="scroll">
+     <a class="chip active wave">The best of 2020</a>
+     <a class="chip wave">Documentaries</a>
+     <a class="chip wave">Rock and roll</a>
+     <a class="chip wave">Others</a>
+    </nav>
+    
+    <div class="space"></div>
+    
+    <div class="row">
+     
+      <div class="col s12 m6 l3" v-for="(item, i) in itens">
+       
+        <div class="card no-padding flat transparent">
+         <a class="wave">
+          <img class="responsive" :src="item.image"/>
+          <div class="absolute right bottom small-margin black white-text small-text">&nbsp;00:00:00&nbsp;</div>
+         </a>
+          
+          <div class="space"></div>
+          
+          <div class="row no-wrap middle-align">
+            <div class="col min">
+             <img class="small circle" :src="item.image"/></div>
+            <div class="col truncate">
+              <div class="bold">{{ item.title }}</div>
+              <div class="grey-text">10k views</div>
+            </div>
+            <div class="col min">
+              <button class="none grey-text" :data-ui="'#dropdown-' + i"><i>more_vert</i>
+                <div class="dropdown left no-wrap" :id="'dropdown-' + i" :data-ui="'#dropdown-' + i"><a>Save to library</a><a>Watch later</a><a>Like it</a></div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="large-divider"></div>
+    <h5>What's hot</h5>
+    <div class="row no-wrap scroll">
+     
+      <div class="col" v-for="item in whatsHot">
+       
+        <div class="card no-padding border transparent small-width">
+         <a class="wave">
+         <img class="responsive" :src="item.image"/>
+         <div class="absolute right bottom small-margin black white-text small-text">&nbsp;00:00:00&nbsp;</div>
+          </a>
+          
+          <div class="padding">
+            <div class="row no-wrap middle-align">
+              <div class="col truncate">
+                <div class="bold">{{ item.title }}</div>
+                <div class="grey-text">10k views</div>
+              </div>
+              <div class="col min"><a class="grey-text"><i>thumb_up</i></a></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+    <div class="large-divider"></div>
+    <h5>Your videos</h5>
+    <div class="row no-wrap scroll">
+      <div class="col" v-for="item in yourVideos">
+        <div class="card no-padding border transparent small-width"><a class="wave"><img class="responsive" :src="item.image"/>
+            <div class="absolute right bottom small-margin black white-text small-text">&nbsp;00:00:00&nbsp;</div></a>
+          <div class="padding">
+            <div class="row no-wrap middle-align">
+              <div class="col truncate">
+                <div class="bold">{{ item.title }}</div>
+                <div class="grey-text">10k views</div>
+              </div>
+              <div class="col min"><a class="grey-text"><i>thumb_up</i></a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <div class="page right active" v-show="url != '/youtube'">
+    <div class="row">
+      <div class="col s12" v-for="item in itens">
+       
+        <div class="card no-padding flat transparent">
+          <div class="row">
+           
+            <div class="col s6 m4 l3">
+             <a class="wave">
+              <img class="empty-state" :src="item.image"/>
+               <div class="absolute right bottom small-margin black white-text small-text">&nbsp;00:00:00&nbsp;</div>
+              </a>
+             </div>
+                
+            <div class="col s6 m8 l9">
+              <h5 class="no-margin">{{ item.title }}</h5>
+              <div class="grey-text">10k views</div>
+              <div class="space"></div>
+              <div class="grey-text">
+               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+               </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+ <!-- /app --> 
+</div>
+
+
+
+
+
+
+
+
+
+<style>
+.is-youtube-light {
+  --color-1: #f44336;
+  --color-1a: #f4433680;
+  --color-1b: #f4433600;
+  --color-2: #000000;
+  --color-2a: #00000010;
+  --color-2b: #00000020;
+  --color-3: #e91e63;
+  --color-4: #ffffff;
+  --color-4a: rgba(255, 255, 255, 0.9);
+  --color-5: #f5f5f5;
+}
+.is-youtube-dark {
+  --color-1: #ef5350;
+  --color-1a: #ef535080;
+  --color-1b: #ef535000;
+  --color-2: #ffffff;
+  --color-2a: #ffffff10;
+  --color-2b: #ffffff20;
+  --color-3: #ff9800;
+  --color-4: #263238;
+  --color-4a: rgba(55, 71, 79, 0.9);
+  --color-5: #212121;
+}
+</style>
+
+
+
+
+
+
+
+
+
+<script>
+let app = new Vue({
+  el: "#app",
+  data() {
+    return {
+      url: "/youtube",
+      theme: null,
+      logo: null,
+      itens: [
+        { title: "Alok 01/2021", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/alok-001.jpg" },
+        { title: "Alok 01/2020", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/alok-002.jpg" },
+        { title: "Best of 2021", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/vintage-001.jpg" },
+        { title: "Best of 2020", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/vintage-002.jpg" },
+        { title: "Radio online", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/radio-001.jpg" },
+        { title: "Alok, Zebra, Iro - Ocean", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/ocean-001.jpg" },
+        { title: "Alok 01/2021", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/alok-001.jpg" },
+        { title: "Alok 01/2020", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/alok-002.jpg" },
+      ],
+      whatsHot: [
+        { title: "Best of 2021", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/vintage-001.jpg" },
+        { title: "Best of 2020", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/vintage-002.jpg" },
+        { title: "Radio online", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/radio-001.jpg" },
+        { title: "Alok, Zebra, Iro - Ocean", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/ocean-001.jpg" },
+        { title: "Alok 01/2021", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/alok-001.jpg" },
+        { title: "Alok 01/2020", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/alok-002.jpg" },
+        { title: "Best of 2021", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/vintage-001.jpg" },
+        { title: "Best of 2020", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/vintage-002.jpg" },
+      ],
+      yourVideos: [
+        { title: "Radio online", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/radio-001.jpg" },
+        { title: "Alok, Zebra, Iro - Ocean", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/ocean-001.jpg" },
+        { title: "Alok 01/2021", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/alok-001.jpg" },
+        { title: "Alok 01/2020", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/alok-002.jpg" },
+        { title: "Best of 2021", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/vintage-001.jpg" },
+        { title: "Best of 2020", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/vintage-002.jpg" },
+        { title: "Radio online", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/radio-001.jpg" },
+        { title: "Alok, Zebra, Iro - Ocean", image: "https://raw.githack.com/beercss/beercss/v1.0.0/dist/ocean-001.jpg" },
+      ]
+    }
+  },
+  mounted() { this.updateTheme(); ui(); },
+  
+  methods: {
+    updateTheme() {
+      if (this.theme == "is-youtube-light") {
+        this.theme = "is-youtube-dark";
+        this.logo = "https://raw.githack.com/beercss/beercss/v1.0.0/dist/youtube-dark.png";
+      } else {
+        this.theme = "is-youtube-light";
+        this.logo = "https://raw.githack.com/beercss/beercss/v1.0.0/dist/youtube-light.png";
+      }
+  
+      document.body.className = this.theme;
+    },
+    redirect(url) { document.body.scrollTop = 0; this.url = url; },
+  },
+});
+</script>
+
+
+</body>
+</html>
+

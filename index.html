@@ -431,7 +431,11 @@ methods: {
     
     updateTheme(){ document.body.className = this.w.theme; },
 
-    url(url) { this.w.url = url;	},
+    url(url) { 
+    	this.w.url = url;
+    	window.scrollTo(0, 0);
+    	
+    },
     
 
  

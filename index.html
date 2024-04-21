@@ -107,14 +107,12 @@
 
 
 
-
-
 </head>
 
 <body v-cloak :class="w.theme" id="app">
 	
 
- <nav class="top fixed primary-container">
+ <nav class="top fixed fill">
 
 <button class="circle transparent extra" data-ui="#drawer"><i>menu</i></button>
 
@@ -129,7 +127,7 @@
  	</button>
 
 
- 	<button class="chip circle transparent m l" data-ui="#notif_d">
+ 	<button class="chip circle transparent m l" @click="url( '/page2' )">
  		<i>notifications</i>
  		<div class="badge">new</div>
  	</button>
@@ -141,6 +139,25 @@
  			<a class="row"><i>info</i>Info</a>
  		</menu>
  	</button>
+
+ 	<dialog id="drawer" class="left no-padding">
+ 		<nav class="drawer" data-ui="#drawer">
+
+ 			<header>
+ 				<nav>
+ 					<h6 class="max lin" v-once v-text="w.title"></h6>
+ 					<button class="transparent circle large"><i>close</i></button>
+ 				</nav>
+ 			</header>
+
+ 			<a v-for="i in w.menu" @click="url(i.url,i.title)" :class="{active: w.url == i.url}">
+ 				<i v-text="i.icon"></i><span :class="{max: i.tag}" v-text="i.title"></span>
+ 				<b v-if="i.tag" v-text="i.tag"></b>
+ 			</a>
+
+ 		</nav>
+ 	</dialog>
+
 
  </nav>
 
@@ -167,43 +184,8 @@
  </nav>
 
 
- <div><!-- content -->
-
- 	<dialog id="drawer" class="left no-padding">
- 		<nav class="drawer" data-ui="#drawer">
-
- 			<header>
- 				<nav>
- 					<h6 class="max lin" v-once v-text="w.title"></h6>
- 					<button class="transparent circle large"><i>close</i></button>
- 				</nav>
- 			</header>
-
- 			<a v-for="i in w.menu" @click="url(i.url,i.title)" :class="{active: w.url == i.url}">
- 				<i v-text="i.icon"></i><span :class="{max: i.tag}" v-text="i.title"></span>
- 				<b v-if="i.tag" v-text="i.tag"></b>
- 			</a>
-
- 		</nav>
- 	</dialog>
-
- 	<dialog id="notif_d">
- 		<header>
- 			<h1>notifications</h1>
- 		</header>
- 		<div>notifications</div>
- 		<nav class="right-align no-space">
- 			<button data-ui="#notif_d" class="transparent link">Close</button>
- 		</nav>
- 	</dialog>
-
- 	<!-- / content -->
- </div>
- 
-
 
 <main class="responsive">
-
 
 
 <template v-if="w.url === '/'"><div class="page active left">
@@ -212,7 +194,7 @@
 
 <div class="large space"></div>
 
-<div class="fill medium-height middle-align center-align" id="test">
+<div class="fill medium-height middle-align center-align">
 	
 	<div class="center-align">
 		<img class="small-height" src="/content/pics/car-hero.png" alt="car">

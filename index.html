@@ -114,13 +114,9 @@
 <body v-cloak :class="w.theme" id="app">
 	
 
- <nav class="top fixed fill">
+ <nav class="top fixed primary-container">
 
-
- 	<button v-show="w.url !== '/' " class="circle transparent extra" @click="url('/')"><i>arrow_back</i></button>
-
- 	<button v-show="w.url === '/' " class="circle transparent extra"><i>home</i></button>
- 	<button class="circle transparent extra m l" data-ui="#drawer"><i>menu</i></button>
+<button class="circle transparent extra" data-ui="#drawer"><i>menu</i></button>
 
  	<div class="max"></div>
  	<h5 v-once v-text="w.title"></h5>
@@ -178,8 +174,7 @@
 
  			<header>
  				<nav>
- 					<img class="circle" :src="w.logo">
- 					<h6 class="max lin" v-text="w.title"></h6>
+ 					<h6 class="max lin" v-once v-text="w.title"></h6>
  					<button class="transparent circle large"><i>close</i></button>
  				</nav>
  			</header>
@@ -222,7 +217,7 @@
 	<div class="center-align">
 		<img class="small-height" src="/content/pics/car-hero.png" alt="car">
 
-		<h5 v-once v-text="'welcome to ' + w.title" ></h5>
+		<h5 v-once v-text="'welcome to ' + w.title"></h5>
 		<p>for more information contact us on</p>
 		<nav class="center-align">
 			<button class="border round"><i>phone</i></button>

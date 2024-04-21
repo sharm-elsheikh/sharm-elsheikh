@@ -2,163 +2,361 @@
 <html lang="en">
 
 <head>
- <meta charset="UTF-8">
- <meta http-equiv="X-UA-Compatible" content="IE=Edge">
- <meta name="viewport" content="width=device-width, initial-scale=1">
- <title>Car Reservation</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>website</title>
+
 
 
 <link href="https://cdn.jsdelivr.net/npm/beercss@3.5.1/dist/cdn/beer.min.css" rel="stylesheet">
 
 <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.5.1/dist/cdn/beer.min.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/petite-vue"></script>
+
 <!--
-<script type="module" src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@1.1.0/dist/cdn/material-dynamic-colors.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chibi/3.0.9/chibi-min.js"></script>
 -->
 
 
-<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<style>
+[v-cloak] {display: none;}
+	
+:root {
+--primary:#006493;
+--on-primary:#ffffff;
+--primary-container:#cae6ff;
+--on-primary-container:#001e30;
+--secondary:#50606e;
+--on-secondary:#ffffff;
+--secondary-container:#d3e5f5;
+--on-secondary-container:#0c1d29;
+--tertiary:#65587b;
+--on-tertiary:#ffffff;
+--tertiary-container:#ebddff;
+--on-tertiary-container:#201634;
+--error:#ba1a1a;
+--on-error:#ffffff;
+--error-container:#ffdad6;
+--on-error-container:#410002;
+--background:#fcfcff;
+--on-background:#1a1c1e;
+--surface:#f9f9fc;
+--on-surface:#1a1c1e;
+--surface-variant:#dde3ea;
+--on-surface-variant:#41474d;
+--outline:#72787e;
+--outline-variant:#c1c7ce;
+--shadow:#000000;
+--scrim:#000000;
+--inverse-surface:#2e3133;
+--inverse-on-surface:#f0f0f3;
+--inverse-primary:#8dcdff;
+--surface-dim:#d9dadd;
+--surface-bright:#f9f9fc;
+--surface-container-lowest:#ffffff;
+--surface-container-low:#f3f3f6;
+--surface-container:#edeef1;
+--surface-container-high:#e8e8eb;
+--surface-container-highest:#e2e2e5;
+}
+
+:root>.dark{
+--primary:#8dcdff;
+--on-primary:#00344f;
+--primary-container:#004b70;
+--on-primary-container:#cae6ff;
+--secondary:#b7c9d9;
+--on-secondary:#22323f;
+--secondary-container:#384956;
+--on-secondary-container:#d3e5f5;
+--tertiary:#cfc0e8;
+--on-tertiary:#362b4b;
+--tertiary-container:#4d4162;
+--on-tertiary-container:#ebddff;
+--error:#ffb4ab;
+--on-error:#690005;
+--error-container:#93000a;
+--on-error-container:#ffb4ab;
+--background:#1a1c1e;
+--on-background:#e2e2e5;
+--surface:#111416;
+--on-surface:#e2e2e5;
+--surface-variant:#41474d;
+--on-surface-variant:#c1c7ce;
+--outline:#8b9198;
+--outline-variant:#41474d;
+--shadow:#000000;
+--scrim:#000000;
+--inverse-surface:#e2e2e5;
+--inverse-on-surface:#2e3133;
+--inverse-primary:#006493;
+--surface-dim:#111416;
+--surface-bright:#37393c;
+--surface-container-lowest:#0c0e11;
+--surface-container-low:#1a1c1e;
+--surface-container:#1e2022;
+--surface-container-high:#282a2d;
+--surface-container-highest:#333537;
+}
+	
+</style>
+
+
 
 
 
 
 </head>
 
-
-<body>
- 
-<div id="app">
+<body v-cloak :class="w.theme" id="app">
 	
- 
+
  <nav class="top fixed fill">
-  
- 
-<button class="circle transparent" data-ui="#drawer"><i>menu</i></button>
-
-<a @click="url(w.url)"><img class="circle" :src="w.logo"></a>
-<a @click="url(w.url)"><h5>{{w.title}}</h5></a>
 
 
-<div class="max"></div>
+ 	<button v-show="w.url !== '/' " class="circle transparent extra" @click="url('/')"><i>arrow_back</i></button>
+
+ 	<button v-show="w.url === '/' " class="circle transparent extra"><i>home</i></button>
+ 	<button class="circle transparent extra m l" data-ui="#drawer"><i>menu</i></button>
+
+ 	<div class="max"></div>
+ 	<h5 v-once v-text="w.title"></h5>
+
+ 	<div class="max"></div>
+
+ 	<button class="chip circle transparent" @click="changeTheme()">
+ 		<i v-show="w.theme !== 'dark'" class="page top active">light_mode</i>
+ 		<i v-show="w.theme === 'dark'" class="page top active">dark_mode</i>
+ 	</button>
 
 
-   <button class="chip circle transparent" @click="changeTheme()">
-   <i v-if="w.theme === 'light'" class="page bottom active">light_mode</i>
-   <i v-if="w.theme === 'dark'" class="page bottom active">dark_mode</i>
-   </button>
+ 	<button class="chip circle transparent m l" data-ui="#notif_d">
+ 		<i>notifications</i>
+ 		<div class="badge">new</div>
+ 	</button>
 
+ 	<button class="chip circle transparent m l" data-ui="#menuDrop">
+ 		<i>more_vert</i>
+ 		<menu class="no-wrap left" id="menuDrop">
+ 			<a class="row"><i>phone</i>Contact</a>
+ 			<a class="row"><i>info</i>Info</a>
+ 		</menu>
+ 	</button>
 
-   <button class="chip circle transparent m l" data-ui="#notif_d">
-    <i>notifications</i>
-    <div class="badge">new</div>
-   </button>
-
-   <button class="chip circle transparent m l" data-ui="#menuDrop">
-    <i>more_vert</i>
-    <menu class="no-wrap left" id="menuDrop">
-     <a class="row"><i>phone</i>Contact</a>
-     <a class="row"><i>info</i>Info</a>
-    </menu>
-   </button>
-
-  </nav>
+ </nav>
 
  <nav class="top-round bottom s">
- 	<a v-for="i in w.nav" @click="url(i.url)" :class="{active: w.url == i.url}">
- 		<div v-if="i.tag" class="badge">{{i.tag}}</div>
- 		<i>{{i.icon}}</i><span>{{i.title}}</span>
+
+ 	<a @click="url( '/' )" :class="{active: w.url === '/' }">
+ 		<i>home</i><span>Home</span>
  	</a>
- </nav> 
- 
+
+ 	<a data-ui="#drawer"><i>widgets</i><span>Menu</span></a>
+
+ 	<a @click="url( '/page2' )" :class="{active: w.url === '/page2' }">
+ 		<div class="badge">-10%</div><i>notifications</i><span>Promotions</span>
+ 	</a>
+
+ 	<a @click="url( '/page3' )" :class="{active: w.url === '/page3' }">
+ 		<i>share</i><span>Share</span>
+ 	</a>
+
+ 	<a @click="url( '/page4' )" :class="{active: w.url === '/page4' }">
+ 		<i>info</i><span>Info</span>
+ 	</a>
+
+ </nav>
 
 
-<div><!-- content -->
- 
-  <dialog id="drawer" class="left no-padding">
-   <nav class="drawer" data-ui="#drawer">
+ <div><!-- content -->
 
-    <header>
-     <nav>
-      <img class="circle" :src="w.logo">
-      <h6 class="max lin">{{w.title}}</h6>
-      <button class="transparent circle large"><i>close</i></button>
-     </nav>
-    </header>
-    
-		<a v-for="i in w.menu" @click="url(i.url)" :class="{active: w.url == i.url}"> 
-		<i>{{i.icon}}</i>  <span :class="{max: i.tag}">{{i.title}}</span>
-		<b v-if="i.tag">{{i.tag}}</b>
-    </a>
- 
-   </nav>
-  </dialog>
+ 	<dialog id="drawer" class="left no-padding">
+ 		<nav class="drawer" data-ui="#drawer">
 
-  <dialog id="notif_d" class="top">
-   <header>
-    <h1>notifications</h1>
-   </header>
-   <div>notifications</div>
-   <nav class="right-align no-space">
-    <button data-ui="#notif_d" class="transparent link">Close</button>
-   </nav>
-  </dialog>
+ 			<header>
+ 				<nav>
+ 					<img class="circle" :src="w.logo">
+ 					<h6 class="max lin" v-text="w.title"></h6>
+ 					<button class="transparent circle large"><i>close</i></button>
+ 				</nav>
+ 			</header>
 
-  <!-- / content -->
+ 			<a v-for="i in w.menu" @click="url(i.url,i.title)" :class="{active: w.url == i.url}">
+ 				<i v-text="i.icon"></i><span :class="{max: i.tag}" v-text="i.title"></span>
+ 				<b v-if="i.tag" v-text="i.tag"></b>
+ 			</a>
+
+ 		</nav>
+ 	</dialog>
+
+ 	<dialog id="notif_d">
+ 		<header>
+ 			<h1>notifications</h1>
+ 		</header>
+ 		<div>notifications</div>
+ 		<nav class="right-align no-space">
+ 			<button data-ui="#notif_d" class="transparent link">Close</button>
+ 		</nav>
+ 	</dialog>
+
+ 	<!-- / content -->
  </div>
+ 
+
+
+<main class="responsive">
 
 
 
-
- <main class="responsive">
-  
+<template v-if="w.url === '/'"><div class="page active left">
 
 
-	<div class="page left active" id="page1" v-if="w.url == 'page1'">
+
+<div class="large space"></div>
+
+<div class="fill medium-height middle-align center-align" id="test">
 	
-		
+	<div class="center-align">
+		<img class="small-height" src="/content/pics/car-hero.png" alt="car">
+
+		<h5 v-once v-text="'welcome to ' + w.title" ></h5>
+		<p>for more information contact us on</p>
+		<nav class="center-align">
+			<button class="border round"><i>phone</i></button>
+			<button class="green"><i>phone</i> whatsapp</button>
+		</nav>
+		<div class="space"></div>
+	</div>
+	
+</div>
 
 
-
-
-
-
-
-
-
-
-  
+<div class="divider"></div>
 <div class="space"></div>
 
+<h1>our services</h1>
+		
+<div class="grid">
+	
+	<div class="s6 m6 l3" @click="url('/cars')">
+	<article class=" border">
+		<h5 class="link">Cars</h5>
+		<p>available Cars</p>
+	</article>
+
+
+	</div>
+	
+	<div class="s6 m6 l3" @click="url('/tours')">
+	<article class=" border">
+		<h5 class="link">Tours</h5>
+		<p>available tours</p>
+	</article>
+
+
+	</div>
+
+	</div>
+  
+  
+		
+		
+		
+		
+	
+</div></template>
+
+
+<template v-else-if="w.url === '/page2'"><div class="page active left">
+ <h1>page 2</h1>
+ 
+ 
+  
+<a class="row wave">
+	<i>mail</i>
+	<div class="max">Default 4</div>
+	<span class="badge circle none">3</span>
+</a>
+ 
+<a class="row wave">
+	<i>mail</i>
+	<div class="max">Default 4</div>
+	<span class="badge circle none">3</span>
+</a>
+
+<a class="row wave">
+	<i>mail</i>
+	<div class="max">Default 4</div>
+	<span class="badge circle none">3</span>
+</a>
+
+<a class="row wave">
+	<i>mail</i>
+	<div class="max">Default 4</div>
+	<span class="badge circle none">3</span>
+</a>
+
+<a class="row wave">
+	<i>mail</i>
+	<div class="max">Default 4</div>
+	<span class="badge circle none">3</span>
+</a>
+
+ 
+ 
+ 
+</div></template>
+
+
+<template v-else-if="w.url === '/page3'"><div class="page active left">
+ <h1>page 3</h1>
+</div></template>
+
+
+<template v-else-if="w.url === '/page4'"><div class="page active left">
+ <h1>page 4</h1>
+ <div>content</div>
+</div></template>
+
+
+<template v-else-if="w.url === '/cars'"><div class="page active left">
+ 
+	
+<div class="space"></div>
 <h2>Available Cars</h2> 
    
- <div class="grid" id="car">
+ <div class="grid" id="cars">
 
- 	<div class="s12 m6 l4" v-for="i in cars">
+ 	<div class="s12 m6 l4" v-for="(i,x) in db.cars">
+ 		
   <article class="no-padding medium-elevate">
    <div class="grid no-space">
     <div class="s6">
      <img class="responsive" :src="i.img">
      <div class="absolute top left right padding top-shadow white-text">
-      <h5>{{i.model}}</h5>
-      <p>{{i.description}}</p>
+      <h5 v-text="i.model"></h5>
+      <p v-text="i.description"></p>
      </div>
     </div>
     <div class="s6">
      <div class="padding">
-      <strong class="large-text right-align top-align">{{i.price_one_way}}</strong>
+      <strong class="large-text right-align top-align" v-text="i.prices.W"></strong>
       <div>
        <a><i>person</i>
-        <div class="badge border">{{i.people}}</div>
+        <div class="badge border" v-text="i.size.p"></div>
        </a>
        <a><i>trip</i>
-        <div class="badge border">{{i.bags}}</div>
+        <div class="badge border" v-text="i.size.b"></div>
        </a>
       </div>
 
       <div class="space"></div>
 
       <nav>
-       <button class="border round absolute right" :data-ui="'#d' + i.id">details</button>
+       <button class="border round absolute right" :data-ui="'#d' + x">details</button>
       </nav>
      </div>
     </div>
@@ -166,27 +364,23 @@
   </article>
 
 
-
-
-
-
-  <dialog class="top" :id="'d'+ i.id">
+  <dialog class="modal" :id="'d' + x">
 
    <header class="fixed">
     <nav class="right-align no-space">
-     <button :data-ui="'#d'+ i.id" class="border"><i>close</i></button>
+     <button :data-ui="'#d' + x" class="border"><i>close</i></button>
     </nav>
    </header>
 
 
    <div>
     <div class="tabs">
-     <a :data-ui="'#tA_d'+ i.id" class="active"><i>add_road</i><span>per way</span></a>
-     <a :data-ui="'#tB_d'+ i.id"><i>schedule</i><span>per hour</span></a>
-     <a :data-ui="'#tC_d'+ i.id"><i>sailing</i><span>Tours</span></a>
+     <a :data-ui="'#tA_d' + x" class="active"><i>add_road</i><span>per way</span></a>
+     <a :data-ui="'#tB_d' + x"><i>schedule</i><span>per hour</span></a>
+     <a :data-ui="'#tC_d' + x"><i>sailing</i><span>Tours</span></a>
     </div>
 
-    <div :id="'tA_d'+ i.id" class="page padding active top scroll">
+    <div :id="'tA_d' + x" class="page padding active top scroll">
 
 <table>
  <thead>
@@ -194,19 +388,19 @@
  </thead>
  <tbody>
   <tr>
-   <td>airport</td><td>{{i.price_one_way}}</td> <td>{{i.price_two_way}}</td>
+   <td>airport</td><td v-text="i.prices.W"></td><td v-text="i.prices.WW"></td>
   </tr>
   <tr>
-   <td>old market</td><td>{{i.price_one_way}}</td><td>{{i.price_two_way}}</td></tr>
+   <td>old market</td><td v-text="i.prices.W"></td><td v-text="i.prices.WW"></td></tr>
   <tr>
-   <td>hadaba</td> <td>{{i.price_one_way}}</td> <td>{{i.price_two_way}}</td>
+   <td>hadaba</td> <td v-text="i.prices.W"></td> <td v-text="i.prices.WW"></td>
   </tr>
  </tbody>
 </table>
 
     </div>
 
-    <div :id="'tB_d'+ i.id" class="page padding top">
+    <div :id="'tB_d' + x" class="page padding top">
   
   <table>
  <thead>
@@ -214,16 +408,16 @@
  </thead>
  <tbody>
   <tr>
-   <td>{{i.price_one_hour}}</td> <td>{{i.price_two_hour}}</td>
+   <td v-text="i.prices.H"></td> <td v-text="i.prices.HH"></td>
   </tr>
  </tbody>
 </table>
-  
+
     </div>
 
-    <div :id="'tC_d'+ i.id" class="page padding top">
+    <div :id="'tC_d' + x" class="page padding top">
      
-     <button class="responsive"><i>link</i> available tours</button>
+     <button class="responsive" @click="url('/tours')"><i>link</i> available tours</button>
      
    
     </div>
@@ -234,7 +428,7 @@
     <nav class="left-align no-space">
      
      <a href="https://wa.me/201550579981">
-      <button :data-ui="'#d'+ i.id" class="border round">
+      <button :data-ui="'#d' + x" class="border round">
        <i>phone</i><span>book now</span>
       </button>
       
@@ -247,216 +441,222 @@
 
   </dialog>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
+
 
 </div>
 
 <div class="space"></div>
-  
-  
-  
 
 
+</div></template>
 
 
+<template v-else-if="w.url === '/tours'"><div class="page active left">
+ 
+	
+<div class="space"></div>
+<h2>Available Tours</h2> 
+   
+ <div class="grid" id="tours">
 
 
+ 	<div class="s12 m6 l4" v-for="(i,x) in db.tours">
+ 		
+ 	<article class="no-padding border round large-elevate">
+	<img class="responsive top-round medium-elevate" :src="i.img">
 
-
-
+	<div class="padding">
+		<h5 v-text="i.title"></h5>
+		<p v-text="i.description"></p>
 		
+		<div class="space"></div>
+		<button class="border round small-elevate wave" :data-ui="'#dd' + x">Details</button>
 		
-		
-		
-	</div><!-- page end -->
-
-	<div class="page left active" id="page2" v-if="w.url == 'page2'"
-	><h1>page 2</h1></div><!-- page end -->
-
-  <div class="page left active" id="page3" v-if="w.url == 'page3'">
-  	<h1>page 3</h1> </div><!-- page end -->
-
-  <div class="page left active" id="page4" v-if="w.url == 'page4'">
-  	<h1>page 4</h1></div><!-- page end -->
-
-  <div class="page left active" id="page5" v-if="w.url == 'page5'">
-  	<h1>page 5</h1> </div><!-- page end -->
+	</div>
+</article>
 
 
- </main>
+  <dialog class="modal" :id="'dd' + x">
+
+   <header class="fixed">
+    <nav class="right-align no-space">
+     <button :data-ui="'#dd' + x" class="border"><i>close</i></button>
+    </nav>
+   </header>
 
 
+<div v-text="i.description"></div>
 
 
+   <footer class="bottom fixed">
+    <nav class="left-align no-space">
+     
+     <a href="https://wa.me/201550579981">
+      <button :data-ui="'#dd' + x" class="border round">
+       <i>phone</i><span>book now</span>
+      </button>
+      
+     </a>
 
+    </nav>
+   </footer>
 
-
+  </dialog>
 
 
 </div>
-<script>
-const app = Vue.createApp({
- data() {	return {
- 	
+
+
+</div>
+
+<div class="space"></div>
+
  
-	
-	w: {	
-		title: "website",
-		url: "page1",
-		logo: "/content/logo.jpeg",
-		theme: JSON.parse(localStorage.getItem('theme')) || "light" ,
-		
-	
-	
-	menu: [
-	 {title: "menu 1", url: "page1", icon: "link" ,tag:"25"},
-	 {title: "menu 2", url: "page2", icon: "link" },
-	 {title: "menu 3", url: "page3", icon: "link" },
-	 {title: "menu 4", url: "page4", icon: "link" },
-	 {title: "menu 5", url: "page5", icon: "link"},
-				],
-				
-	nav: [
-	 {title: "Home", url: "page1", icon: "home", },
-	 {title: "menu", url: "page2", icon: "widgets"},
-	 {title: "bell", url: "page3", icon: "notifications",tag: "new"},
-	 {title: "Share", url: "page4", icon: "Share" },
-	 {title: "info", url: "page5", icon: "info" },
-			 ],
-						
-},
+</div></template>
 
 
+<template v-else><div class="page active left">
+ <h1>404</h1>
+ <p>page not found!</p>
+</div></template>
 
-	cars: [
-	{
-   id: "1",
-   model: "toyota",
-   description: "2010",
-   people: "4",
-   bags: "2",
-   img: "/content/pics/car1.JPG",
-   price_one_way: "15$",
-   price_two_way: "25$",
-   price_one_hour: "100$",
-   price_two_hour: "200$",
+
+</main>
+
+
+<script>
+const db = PetiteVue.reactive({
+
+cars: [
+			{
+				model: "toyota",	description: "2010",
+				img: "content/pics/car1.JPG",
+				size: {p: "4", b: "2"},
+				prices:{W:'15$',WW:'25$',H:'25$',HH:'35$'}
   },
-	{
-   id: "2",
-   model: "mercedes",
-   description: "S class",
-   people: "4",
-   bags: "2",
-   img: "/content/pics/car2.JPG",
-   price_one_way: "25$",
-   price_two_way: "45$",
-   price_one_hour: "100$",
-   price_two_hour: "200$",
+			{
+				model: "mercedes",	description: "S class",
+				img: "content/pics/car2.JPG",
+				size: {p: "4", b: "2"},
+				prices:{W:'25$',WW:'45$',H:'100$',HH:'200$'}
   },
-	{
-   id: "3",
-   model: "sedan",
-   description: "2017",
-   people: "4",
-   bags: "2",
-   img: "/content/pics/car3.JPG",
-   price_one_way: "15$",
-   price_two_way: "25$",
-   price_one_hour: "100$",
-   price_two_hour: "200$",
+			{
+				model: "sedan",	description: "2017",
+				img: "content/pics/car3.JPG",
+				size: {p: "2", b: "2"},
+				prices:{W:'15$',WW:'25$',H:'100$',HH:'200$'}
   },
-	{
-   id: "4",
-   model: "mini bus",
-   description: "up to 12 people",
-   people: "13",
-   bags: "12",
-   img: "/content/pics/mini_bus.JPG",
-   price_one_way: "100$",
-   price_two_way: "150$",
-   price_one_hour: "100$",
-   price_two_hour: "200$",
+			{
+				model: "mini bus",	description: "up to 12 people",
+				img: "content/pics/mini_bus.JPG",
+				size: {p: "13", b: "12"},
+				prices:{W:'25$',WW:'35$',H:'100$',HH:'200$'}
 	},
-	{
-   id: "5",
-   model: "bus",
-   description: "up to 17 people",
-   people: "20",
-   bags: "30",
-   img: "/content/pics/bus.JPG",
-   price_one_way: "150$",
-   price_two_way: "250$",
-   price_one_hour: "100$",
-   price_two_hour: "200$",
+			{
+				model: "bus",	description: "up to 17 people",
+				img: "content/pics/bus.JPG",
+				size: {p: "20", b: "30"},
+				prices:{W:'150$',WW:'250$',H:'200$',HH:'400$'}
   },
+  
   ],
 
 
 
-}	},
 
 
+tours: [
+			{
+				title: "city tour",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				img: "content/pics/car1.JPG",
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "boat",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				img: "content/pics/car2.JPG",
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "submarin",
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				img: "content/pics/car3.JPG",
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "diving",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				img: "content/pics/mini_bus.JPG",
+				prices:{A:'15', CH:'25'}
+	},
+			{
+				title: "pyramids",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				img: "content/pics/bus.JPG",
+				prices:{A:'15', CH:'25'}
+  },
+  
+  ],
 
 
-
-	mounted() {
-		
-		this.updateTheme();
-	
-		
-},
-
-
-methods: {
- 
-		 changeTheme() {
-      if (this.w.theme != "dark") { this.w.theme = "dark"; }
-      else { this.w.theme = "light" ; }; 
-      localStorage.setItem('theme', JSON.stringify(this.w.theme));
-      document.body.className = this.w.theme;
-    },
-    
-    updateTheme(){ document.body.className = this.w.theme; },
-
-    url(url) { 
-    	this.w.url = url;
-    	window.scrollTo(0, 0);
-    	
-    },
-    
-
- 
-},
-
-
-watch: {
-	'$route'() {	window.scrollTo(0, 0);	}
-	}
-
-
-,
-
-
-
-
-})
-
-app.mount('#app')
+  })
 </script>
 
-</body>
-</html>
 
+<script> 
+PetiteVue.createApp({
+
+db,
+
+	w: {	
+		title: "website.com",
+		url: "/",
+		logo: "/content/logo.jpeg",
+		theme: JSON.parse(localStorage.getItem('theme')) || null ,
+		
+	
+	menu: [
+	 {title: "Home", url: "/", icon: "home" ,tag:"25"},
+	 {title: "promotions", url: "/page2", icon: "link" },
+	 {title: "Cars", url: "/cars", icon: "link"},
+	 {title: "Tours", url: "/tours", icon: "link"},
+				],
+				
+		
+},
+
+
+
+changeTheme() {
+		 	this.w.theme = this.w.theme !== "dark" ? "dark" : null
+      localStorage.setItem('theme', JSON.stringify(this.w.theme));
+    },
+
+
+url(u,t) {	
+    	this.w.url = u; 
+    	this.w.title = t;
+    	window.scroll({ top: 0,	left: 0, behavior: 'smooth' });
+    },
+    
+scrol(id) { 
+   	document.getElementById(id).scrollIntoView({behavior: 'smooth'}) 
+   },
+
+  
+mounted(){
+
+	
+},
+
+
+}).mount("#app")
+</script>
+
+
+
+</body>
+
+</html>

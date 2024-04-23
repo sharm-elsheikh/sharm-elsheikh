@@ -11,14 +11,8 @@
 
 
 <link href="https://cdn.jsdelivr.net/npm/beercss@3.5.1/dist/cdn/beer.min.css" rel="stylesheet">
-
 <script type="module" src="https://cdn.jsdelivr.net/npm/beercss@3.5.1/dist/cdn/beer.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/petite-vue"></script>
-
-<!--
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chibi/3.0.9/chibi-min.js"></script>
--->
 
 
 <style>
@@ -105,16 +99,320 @@
 </style>
 
 
+<script type="module"> 
+import {createApp, reactive} from 'https://cdn.jsdelivr.net/npm/petite-vue/dist/petite-vue.es.js'
+
+
+const store = reactive({
+
+cars: [
+			{
+				model: "toyota",	description: "2010",
+				img: "content/cars/car1.JPG",
+				size: {p: "4", b: "2"},
+				prices:{W:'15$',WW:'25$',H:'25$',HH:'35$'}
+  },
+			{
+				model: "mercedes",	description: "S class",
+				img: "content/cars/car2.JPG",
+				size: {p: "4", b: "2"},
+				prices:{W:'25$',WW:'45$',H:'100$',HH:'200$'}
+  },
+			{
+				model: "sedan",	description: "2017",
+				img: "content/cars/car3.JPG",
+				size: {p: "2", b: "2"},
+				prices:{W:'15$',WW:'25$',H:'100$',HH:'200$'}
+  },
+			{
+				model: "mini bus",	description: "up to 12 people",
+				img: "content/cars/mini_bus.JPG",
+				size: {p: "13", b: "12"},
+				prices:{W:'25$',WW:'35$',H:'100$',HH:'200$'}
+	},
+			{
+				model: "bus",	description: "up to 17 people",
+				img: "content/cars/bus.JPG",
+				size: {p: "20", b: "30"},
+				prices:{W:'150$',WW:'250$',H:'200$',HH:'400$'}
+  },
+  
+  ],
+
+tours: [
+			{
+				title: "Pyramids",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2278.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "submarin",
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2280.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "diving",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2281.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+	},
+			{
+				title: "pyramids",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2282.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+  },
+  			{
+				title: "city tour",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2283.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "boat",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2284.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "submarin",
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2285.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "diving",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2286.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+	},
+			{
+				title: "pyramids",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2287.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "city tour",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2288.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "boat",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2289.JPG",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "submarin",
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2290.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+  },
+			{
+				title: "diving",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"content/tours/IMG_2291.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+	},
+			{
+				title: "pyramids",	
+				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+				imgs: [
+					"/content/tours/IMG_2292.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+				prices:{A:'15', CH:'25'}
+  },
+
+  
+  ],
+  
+dImg:0,
+
+file:null,
+
+favorite: JSON.parse(localStorage.getItem('favorite') || '[]'),
+fav(){ localStorage.setItem('favorite', JSON.stringify(store.favorite)); },
+
+
+});
+
+
+/*________________________________________________________________*/
+
+
+createApp({
+
+store,
+
+w: {	
+		title: "website.com",
+		url: "/",
+		logo: "/content/logo.jpeg",
+		theme: JSON.parse(localStorage.getItem('theme')) || null ,
+		
+	
+	menu: [
+	 {title: "Home", url: "/", icon: "home" ,tag:"25"},
+	 {title: "promotions", url: "/page2", icon: "link" },
+	 {title: "Cars", url: "/cars", icon: "link"},
+	 {title: "Tours", url: "/tours", icon: "link"},
+				],
+},
+
+
+changeTheme() {
+	this.w.theme = this.w.theme !== "dark" ? "dark" : null;
+	localStorage.setItem('theme', JSON.stringify(this.w.theme));
+	this.updateTheme();
+},
+
+updateTheme() { document.body.className = this.w.theme; },
+
+
+url(url,title) {
+   this.w.url = url; 
+   this.w.title = title;
+//   ui(id);
+   window.scroll({ top: 0,	left: 0, behavior: 'smooth' });
+},
+    
+scrol(id) {
+ document.getElementById(id).scrollIntoView({behavior: 'smooth'}) 
+ },
+
+
+api:"https://jsonplaceholder.typicode.com/albums",
+
+fetchData() {
+fetch(this.api).then((res) => res.json()).then((data) => {store.file = data})
+},
+
+
+
+get comput() { return this.w.theme + 'mode' },
+  
+
+
+watch(){
+
+this.fetchData();
+store.fav();
+
+},
+
+mounted() {
+	
+this.updateTheme();
+	
+},
+
+
+
+
+
+}).mount("#app");
+</script>
 
 
 </head>
 
-<body v-cloak :class="w.theme" id="app">
+<body>
+
+<div v-scope v-cloak id="app" v-effect="watch()" @vue:mounted="mounted">
 	
 
- <nav class="top fixed fill">
+
+
+<nav class="top fixed fill">
 
 <button class="circle transparent extra" data-ui="#drawer"><i>menu</i></button>
+<button v-show="w.url !== '/' " class="circle transparent extra" @click="url('/')"><i>arrow_back</i></button>
 
  	<div class="max"></div>
  	<h5 v-once v-text="w.title"></h5>
@@ -161,7 +459,7 @@
 
  </nav>
 
- <nav class="top-round bottom s">
+<nav class="top-round bottom s">
 
  	<a @click="url( '/' )" :class="{active: w.url === '/' }">
  		<i>home</i><span>Home</span>
@@ -169,13 +467,15 @@
 
  	<a data-ui="#drawer"><i>widgets</i><span>Menu</span></a>
 
+ 	<a @click="url( '/page3' )" :class="{active: w.url === '/page3' }">
+ 		<div class="badge" v-text="store.favorite.length"></div>
+ 		<i>favorite</i><span>Favorite</span>
+ 	</a>
+
  	<a @click="url( '/page2' )" :class="{active: w.url === '/page2' }">
  		<div class="badge">-10%</div><i>notifications</i><span>Promotions</span>
  	</a>
 
- 	<a @click="url( '/page3' )" :class="{active: w.url === '/page3' }">
- 		<i>share</i><span>Share</span>
- 	</a>
 
  	<a @click="url( '/page4' )" :class="{active: w.url === '/page4' }">
  		<i>info</i><span>Info</span>
@@ -185,19 +485,19 @@
 
 
 
-<main class="responsive">
+<main class="responsive vertical-padding">
+
+
+
 
 
 <template v-if="w.url === '/'"><div class="page active left">
 
 
-
-<div class="large space"></div>
-
 <div class="fill medium-height middle-align center-align">
 	
 	<div class="center-align">
-		<img class="small-height" src="/content/pics/car-hero.png" alt="car">
+		<img class="small-height" src="/content/cars/car-hero.png" alt="car">
 
 		<h5 v-once v-text="'welcome to ' + w.title"></h5>
 		<p>for more information contact us on</p>
@@ -213,6 +513,12 @@
 
 <div class="divider"></div>
 <div class="space"></div>
+
+
+
+
+
+
 
 <h1>our services</h1>
 		
@@ -252,11 +558,7 @@
  
  
   
-<a class="row wave">
-	<i>mail</i>
-	<div class="max">Default 4</div>
-	<span class="badge circle none">3</span>
-</a>
+<a class="row wave"><i>mail</i><div class="max">Default 4</div></a>
  
 <a class="row wave">
 	<i>mail</i>
@@ -289,7 +591,110 @@
 
 
 <template v-else-if="w.url === '/page3'"><div class="page active left">
- <h1>page 3</h1>
+
+
+ <template v-if="store.favorite.length !== 0">
+ 	
+ 	<h2>Favorite Tours</h2>
+ <div class="grid" id="tours">
+
+ 	<div class="s12 m6 l4" v-for="(i,x) in store.favorite">
+ 		
+ 		
+<article class="no-padding border round large-elevate">
+	<img class="responsive top-round medium-elevate" :src="i.imgs[0]">
+
+	<div class="padding">
+		
+		<div class="row">
+		<h5 class="max" v-text="i.title"></h5>
+		<i>schedule</i><span class="large-text">1 Hour</span>
+		<i>person</i><span class="green-text large-text" v-text="i.prices.A + '$'"></span>
+		</div>
+		
+		<p class="bottom-padding" v-text="i.description"></p>
+		
+	
+<div class="row">
+		
+<button class="max border round small-elevate wave" :data-ui="'#tour' + x">Details</button>
+
+<label class="checkbox icon ">
+<input type="checkbox" v-model="store.favorite" :value="i">
+<span class="extra">
+<i>favorite</i><i class="red-text fill">favorite</i>
+</span>
+</label>
+		
+</div>		
+		
+	</div>
+</article>
+
+
+<dialog class="modal scroll" :id="'tour' + x">
+
+<div class="medium-padding">
+ 	<img class="responsive" :src="i.imgs[store.dImg]">
+</div>
+ 
+ 
+ <div class="row scroll">
+<template v-for="(img,index) in i.imgs">
+ <img :class="index === store.dImg ? 'no-opacity round extra' : 'extra medium-opacity' " :src="img" @click="store.dImg = index">
+</template>
+ </div>
+ 
+ <div class="space"></div>
+ 
+<div><table class="border">
+		<tr><td>Header</td><td>Header</td></tr>
+		<tr><td>Cell</td><td>Cell</td></tr>
+		<tr><td>Cell</td><td>Cell</td></tr>
+		<tr><td>Footer</td><td>Footer</td></tr>
+	</tfoot>
+</table></div>
+  
+<div><p v-text="i.description"></p></div>
+
+
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>Some text here</div></a>
+
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>Some text here</div></a>
+
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>Some text here</div></a>
+
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>Some text here</div></a>
+
+
+<footer class="fixed">
+	<nav class="row">
+  <button :data-ui="'#tour' + x" class="max border round link">
+  <i>phone</i><span>book now</span></button>
+  
+  <button @click="store.dImg = 0" :data-ui="'#tour' + x" class="transparent link">
+  <i>close</i><span>close</span></button>
+  </nav>
+</footer>
+
+</dialog>
+
+</div>
+
+
+</div>
+ </template>
+ 
+  
+ <template v-else>
+ <p>you dont have favorite</p>
+ </template>
+ 
+ 
 </div></template>
 
 
@@ -302,12 +707,11 @@
 <template v-else-if="w.url === '/cars'"><div class="page active left">
  
 	
-<div class="space"></div>
 <h2>Available Cars</h2> 
    
- <div class="grid" id="cars">
+<div class="grid" id="cars">
 
- 	<div class="s12 m6 l4" v-for="(i,x) in db.cars">
+<div class="s12 m6 l4" v-for="(i,x) in store.cars">
  		
   <article class="no-padding medium-elevate">
    <div class="grid no-space">
@@ -333,7 +737,7 @@
       <div class="space"></div>
 
       <nav>
-       <button class="border round absolute right" :data-ui="'#d' + x">details</button>
+       <button class="border round absolute right" :data-ui="'#car' + x">details</button>
       </nav>
      </div>
     </div>
@@ -341,23 +745,23 @@
   </article>
 
 
-  <dialog class="modal" :id="'d' + x">
+  <dialog class="modal" :id="'car' + x">
 
    <header class="fixed">
     <nav class="right-align no-space">
-     <button :data-ui="'#d' + x" class="border"><i>close</i></button>
+     <button :data-ui="'#car' + x" class="border"><i>close</i></button>
     </nav>
    </header>
 
 
    <div>
     <div class="tabs">
-     <a :data-ui="'#tA_d' + x" class="active"><i>add_road</i><span>per way</span></a>
-     <a :data-ui="'#tB_d' + x"><i>schedule</i><span>per hour</span></a>
-     <a :data-ui="'#tC_d' + x"><i>sailing</i><span>Tours</span></a>
+     <a :data-ui="'#tA_car' + x" class="active"><i>add_road</i><span>per way</span></a>
+     <a :data-ui="'#tB_car' + x"><i>schedule</i><span>per hour</span></a>
+     <a :data-ui="'#tC_car' + x"><i>sailing</i><span>Tours</span></a>
     </div>
 
-    <div :id="'tA_d' + x" class="page padding active top scroll">
+    <div :id="'tA_car' + x" class="page padding active top scroll">
 
 <table>
  <thead>
@@ -377,7 +781,7 @@
 
     </div>
 
-    <div :id="'tB_d' + x" class="page padding top">
+    <div :id="'tB_car' + x" class="page padding top">
   
   <table>
  <thead>
@@ -392,7 +796,7 @@
 
     </div>
 
-    <div :id="'tC_d' + x" class="page padding top">
+    <div :id="'tC_car' + x" class="page padding top">
      
      <button class="responsive" @click="url('/tours')"><i>link</i> available tours</button>
      
@@ -405,7 +809,7 @@
     <nav class="left-align no-space">
      
      <a href="https://wa.me/201550579981">
-      <button :data-ui="'#d' + x" class="border round">
+      <button :data-ui="'#car' + x" class="border round">
        <i>phone</i><span>book now</span>
       </button>
       
@@ -423,77 +827,114 @@
 
 </div>
 
-<div class="space"></div>
-
 
 </div></template>
 
 
-<template v-else-if="w.url === '/tours'"><div class="page active left">
- 
+<template v-else-if="w.url === '/tours'"><div class="page active left" id="tours">
 	
-<div class="space"></div>
+	
 <h2>Available Tours</h2> 
    
- <div class="grid" id="tours">
+ <div class="grid">
 
 
- 	<div class="s12 m6 l4" v-for="(i,x) in db.tours">
+<div class="s12 m6 l4" v-for="(i,x) in store.tours">
  		
- 	<article class="no-padding border round large-elevate">
-	<img class="responsive top-round medium-elevate" :src="i.img">
+<article class="no-padding border round large-elevate">
+	<img class="responsive top-round medium-elevate" :src="i.imgs[0]">
 
 	<div class="padding">
-		<h5 v-text="i.title"></h5>
-		<p v-text="i.description"></p>
 		
-		<div class="space"></div>
-		<button class="border round small-elevate wave" :data-ui="'#dd' + x">Details</button>
+		<div class="row">
+		<h5 class="max" v-text="i.title"></h5>
+		<i>schedule</i><span class="large-text">1 Hour</span>
+		<i>person</i>
+		<span class="green-text large-text" v-text="i.prices.A + '$'"></span>
+		</div>
+		
+		<p class="bottom-padding" v-text="i.description"></p>
+		
+	
+<div class="row">
+		
+<button class="max border round small-elevate wave" :data-ui="'#tour' + x">Details</button>
+
+<label class="checkbox icon ">
+<input type="checkbox" v-model="store.favorite" :value="i">
+<span class="extra">
+<i>favorite</i><i class="red-text fill">favorite</i>
+</span>
+</label>
+		
+</div>		
 		
 	</div>
 </article>
 
 
-  <dialog class="modal" :id="'dd' + x">
+<dialog class="modal scroll" :id="'tour' + x">
 
-   <header class="fixed">
-    <nav class="right-align no-space">
-     <button :data-ui="'#dd' + x" class="border"><i>close</i></button>
-    </nav>
-   </header>
-
-
-<div v-text="i.description"></div>
-
-
-   <footer class="bottom fixed">
-    <nav class="left-align no-space">
-     
-     <a href="https://wa.me/201550579981">
-      <button :data-ui="'#dd' + x" class="border round">
-       <i>phone</i><span>book now</span>
-      </button>
-      
-     </a>
-
-    </nav>
-   </footer>
-
-  </dialog>
-
-
+<div class="medium-padding">
+ 	<img class="responsive" :src="i.imgs[store.dImg]">
 </div>
-
-
-</div>
-
-<div class="space"></div>
-
  
+ 
+ <div class="row scroll">
+<template v-for="(img,index) in i.imgs">
+ <img :class="index === store.dImg ? 'no-opacity round extra' : 'extra medium-opacity' " :src="img" @click="store.dImg = index">
+</template>
+ </div>
+ 
+ <div class="space"></div>
+ 
+<div><table class="border">
+		<tr><td>Header</td><td>Header</td></tr>
+		<tr><td>Cell</td><td>Cell</td></tr>
+		<tr><td>Cell</td><td>Cell</td></tr>
+		<tr><td>Footer</td><td>Footer</td></tr>
+	</tfoot>
+</table></div>
+  
+<div><p v-text="i.description"></p></div>
+
+
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>Some text here</div></a>
+
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>Some text here</div></a>
+
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>Some text here</div></a>
+
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>Some text here</div></a>
+
+
+<footer class="fixed">
+	<nav class="row">
+  <button :data-ui="'#tour' + x" class="max border round link">
+  <i>phone</i><span>book now</span></button>
+  
+  <button @click="store.dImg = 0" :data-ui="'#tour' + x" class="transparent link">
+  <i>close</i><span>close</span></button>
+  </nav>
+</footer>
+
+</dialog>
+
+
+</div>
+
+
+</div>
+
+
 </div></template>
 
 
-<template v-else><div class="page active left">
+<template v-else><div class="page active left center-align padding">
  <h1>404</h1>
  <p>page not found!</p>
 </div></template>
@@ -502,136 +943,7 @@
 </main>
 
 
-<script>
-const db = PetiteVue.reactive({
-
-cars: [
-			{
-				model: "toyota",	description: "2010",
-				img: "content/pics/car1.JPG",
-				size: {p: "4", b: "2"},
-				prices:{W:'15$',WW:'25$',H:'25$',HH:'35$'}
-  },
-			{
-				model: "mercedes",	description: "S class",
-				img: "content/pics/car2.JPG",
-				size: {p: "4", b: "2"},
-				prices:{W:'25$',WW:'45$',H:'100$',HH:'200$'}
-  },
-			{
-				model: "sedan",	description: "2017",
-				img: "content/pics/car3.JPG",
-				size: {p: "2", b: "2"},
-				prices:{W:'15$',WW:'25$',H:'100$',HH:'200$'}
-  },
-			{
-				model: "mini bus",	description: "up to 12 people",
-				img: "content/pics/mini_bus.JPG",
-				size: {p: "13", b: "12"},
-				prices:{W:'25$',WW:'35$',H:'100$',HH:'200$'}
-	},
-			{
-				model: "bus",	description: "up to 17 people",
-				img: "content/pics/bus.JPG",
-				size: {p: "20", b: "30"},
-				prices:{W:'150$',WW:'250$',H:'200$',HH:'400$'}
-  },
-  
-  ],
-
-
-
-
-
-tours: [
-			{
-				title: "city tour",	
-				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-				img: "content/pics/car1.JPG",
-				prices:{A:'15', CH:'25'}
-  },
-			{
-				title: "boat",	
-				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-				img: "content/pics/car2.JPG",
-				prices:{A:'15', CH:'25'}
-  },
-			{
-				title: "submarin",
-				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-				img: "content/pics/car3.JPG",
-				prices:{A:'15', CH:'25'}
-  },
-			{
-				title: "diving",	
-				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-				img: "content/pics/mini_bus.JPG",
-				prices:{A:'15', CH:'25'}
-	},
-			{
-				title: "pyramids",	
-				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
-				img: "content/pics/bus.JPG",
-				prices:{A:'15', CH:'25'}
-  },
-  
-  ],
-
-
-  })
-</script>
-
-
-<script> 
-PetiteVue.createApp({
-
-db,
-
-	w: {	
-		title: "website.com",
-		url: "/",
-		logo: "/content/logo.jpeg",
-		theme: JSON.parse(localStorage.getItem('theme')) || null ,
-		
-	
-	menu: [
-	 {title: "Home", url: "/", icon: "home" ,tag:"25"},
-	 {title: "promotions", url: "/page2", icon: "link" },
-	 {title: "Cars", url: "/cars", icon: "link"},
-	 {title: "Tours", url: "/tours", icon: "link"},
-				],
-				
-		
-},
-
-
-
-changeTheme() {
-		 	this.w.theme = this.w.theme !== "dark" ? "dark" : null
-      localStorage.setItem('theme', JSON.stringify(this.w.theme));
-    },
-
-
-url(u,t) {	
-    	this.w.url = u; 
-    	this.w.title = t;
-    	window.scroll({ top: 0,	left: 0, behavior: 'smooth' });
-    },
-    
-scrol(id) { 
-   	document.getElementById(id).scrollIntoView({behavior: 'smooth'}) 
-   },
-
-  
-mounted(){
-
-	
-},
-
-
-}).mount("#app")
-</script>
-
+</div><!--app-->
 
 
 </body>

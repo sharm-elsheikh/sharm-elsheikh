@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-	<title>website</title>
+	<title>{{w.title}}</title>
+	<meta name="description" content="Some tags are vital for SEO. Others have little or no impact on rankings. Here's every type of meta tag you need to know about.The purpose of a meta description is to reflect the essence of a page, but with more details and context."/>
+	
+	
+	
 
 
 
@@ -103,7 +107,7 @@
 import {createApp, reactive} from 'https://cdn.jsdelivr.net/npm/petite-vue/dist/petite-vue.es.js'
 
 
-const store = reactive({
+const data = reactive({
 
 cars: [
 			{
@@ -141,7 +145,8 @@ cars: [
 
 tours: [
 			{
-				title: "Pyramids",	
+				title: "Pyramids",
+				tag: "safari",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2278.WEBP",
@@ -154,6 +159,7 @@ tours: [
   },
 			{
 				title: "submarin",
+				tag: "diving",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2280.WEBP",
@@ -165,7 +171,8 @@ tours: [
 				prices:{A:'15', CH:'25'}
   },
 			{
-				title: "diving",	
+				title: "diving",
+				tag: "diving",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2281.WEBP",
@@ -177,7 +184,8 @@ tours: [
 				prices:{A:'15', CH:'25'}
 	},
 			{
-				title: "pyramids",	
+				title: "pyramids",
+				tag: "diving",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2282.WEBP",
@@ -189,7 +197,8 @@ tours: [
 				prices:{A:'15', CH:'25'}
   },
   			{
-				title: "city tour",	
+				title: "city tour",
+				tag: "car",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2283.WEBP",
@@ -201,7 +210,8 @@ tours: [
 				prices:{A:'15', CH:'25'}
   },
 			{
-				title: "boat",	
+				title: "boat",
+				tag: "safari",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2284.WEBP",
@@ -214,6 +224,7 @@ tours: [
   },
 			{
 				title: "submarin",
+				tag: "safari",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2285.WEBP",
@@ -225,7 +236,8 @@ tours: [
 				prices:{A:'15', CH:'25'}
   },
 			{
-				title: "diving",	
+				title: "diving",
+				tag: "safari",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2286.WEBP",
@@ -237,7 +249,8 @@ tours: [
 				prices:{A:'15', CH:'25'}
 	},
 			{
-				title: "pyramids",	
+				title: "pyramids",
+				tag: "safari",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2287.WEBP",
@@ -249,7 +262,8 @@ tours: [
 				prices:{A:'15', CH:'25'}
   },
 			{
-				title: "city tour",	
+				title: "city tour",
+				tag: "safari",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2288.WEBP",
@@ -261,7 +275,8 @@ tours: [
 				prices:{A:'15', CH:'25'}
   },
 			{
-				title: "boat",	
+				title: "boat",
+				tag: "safari",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2289.JPG",
@@ -274,6 +289,7 @@ tours: [
   },
 			{
 				title: "submarin",
+				tag: "safari",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2290.WEBP",
@@ -285,7 +301,8 @@ tours: [
 				prices:{A:'15', CH:'25'}
   },
 			{
-				title: "diving",	
+				title: "diving",
+				tag: "safari",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"content/tours/IMG_2291.WEBP",
@@ -297,7 +314,8 @@ tours: [
 				prices:{A:'15', CH:'25'}
 	},
 			{
-				title: "pyramids",	
+				title: "pyramids",
+				tag: "safari",
 				description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
 				imgs: [
 					"/content/tours/IMG_2292.WEBP",
@@ -312,12 +330,25 @@ tours: [
   
   ],
   
-dImg:0,
+  
 
-file:null,
+obj: {
+  title: "Hima",
+  description: "Hima ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua",
+  imgs: [
+					"content/tours/IMG_2278.WEBP",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					"https://via.placeholder.com/300x250",
+					],
+  prices: { A: '115', CH: '125' }
+},
 
-favorite: JSON.parse(localStorage.getItem('favorite') || '[]'),
-fav(){ localStorage.setItem('favorite', JSON.stringify(store.favorite)); },
+english: {},
+italian: {},
+russian: {},
+arabic: {},
 
 
 });
@@ -326,162 +357,279 @@ fav(){ localStorage.setItem('favorite', JSON.stringify(store.favorite)); },
 /*________________________________________________________________*/
 
 
+
+
+
+
+
+
 createApp({
+/*________________________________________________________________*/
 
-store,
+data,
 
+/*________________________________________________________________*/
+
+//settings
 w: {	
-		title: "website.com",
-		url: "/",
-		logo: "/content/logo.jpeg",
-		theme: JSON.parse(localStorage.getItem('theme')) || null ,
+    url: "/",
+		title: "New Sharm",
+		desc:"description",
+		img: "/content/logo.jpeg",
+		lang: JSON.parse(localStorage.getItem('lang')) || "english",
+		theme: JSON.parse(localStorage.getItem('theme')) || "",
 		
 	
 	menu: [
 	 {title: "Home", url: "/", icon: "home" ,tag:"25"},
-	 {title: "promotions", url: "/page2", icon: "link" },
+	 {title: "promotions", url: "/notifications", icon: "link" },
 	 {title: "Cars", url: "/cars", icon: "link"},
 	 {title: "Tours", url: "/tours", icon: "link"},
+	 {title: "Info", url: "/info", icon: "link"},
 				],
 },
 
+lang(){ localStorage.setItem('lang', JSON.stringify(this.w.lang)); },
 
 changeTheme() {
-	this.w.theme = this.w.theme !== "dark" ? "dark" : null;
+	this.w.theme = this.w.theme !== "dark" ? "dark" : "";
 	localStorage.setItem('theme', JSON.stringify(this.w.theme));
-	this.updateTheme();
 },
 
-updateTheme() { document.body.className = this.w.theme; },
 
-
-url(url,title) {
-   this.w.url = url; 
-   this.w.title = title;
-//   ui(id);
-   window.scroll({ top: 0,	left: 0, behavior: 'smooth' });
+url(url,id) { this.w.url = url;
+  if (id){ document.getElementById(id).scrollIntoView({behavior: 'smooth'}) }
+  else { window.scroll({ top: 0,	left: 0, behavior: 'smooth' } ) }
 },
     
 scrol(id) {
- document.getElementById(id).scrollIntoView({behavior: 'smooth'}) 
+ document.getElementById(id).scrollIntoView({behavior: 'smooth'})
  },
 
+ 
+ /*
+get data(){
+if (this.w.lang === "english"){ return english}
+else if (this.w.lang === "italian"){ return italia }
+else if (this.w.lang === "russian"){ return russian}
+else if (this.w.lang === "عربي"){ return arabic}
+  
+},
 
+ */
+
+/*________________________________________________________________*/
+
+// dialoug
+dImg:0,
+/*________________________________________________________________*/
+
+
+//home page
+toursTag: null,
+toursTags: ["safari","diving","clubs"],
+
+get filteredTours() {
+    if (this.toursTag === null) { return data.tours} 
+    else { return data.tours.filter(t => t.tag === this.toursTag)}
+},
+
+filteredTF(tag) { return data.tours.filter(t => t.tag === tag) },
+
+
+/*________________________________________________________________*/
+
+
+
+
+// favorite
+favorite: JSON.parse(localStorage.getItem('favorite')) || [],
+fav(){ localStorage.setItem('favorite', JSON.stringify(this.favorite)); },
+
+/*________________________________________________________________*/
+
+// Booking
+
+
+booking: { name: "", count: 1, tour: "", note: "" },
+
+
+waNum: "201550579981",
+
+get waMessage() { return encodeURI(
+	
+"*`Website Booking`*" + "\n \n" +
+
+"*`Name:`* " + this.booking.name + "\n" +
+"*`People:`* " + this.booking.count + "\n" +
+"*`Tour Name:`* " + this.booking.tour + "\n" +
+"*`Notes:`* \n" + this.booking.note
+)
+},
+
+
+
+/* open wa link
+get waLink() { return "https://wa.me/" + this.waNum + "?text=" + this.waMessage	},
+*/
+
+
+//open wa app
+get waLink() { return "whatsapp://send?phone=" + this.waNum + "&text=" + this.waMessage },
+
+
+
+
+
+
+
+countUp() {if (this.booking.count < 33) {this.booking.count++;} },
+countDown(){if (this.booking.count > 1) {this.booking.count--;} },
+
+get bookQr() { return "https://api.qrserver.com/v1/create-qr-code/?size=512x512&data=wa.me/" + this.waNum + "?text=" + this.waMessage },
+
+/*________________________________________________________________*/
+
+
+
+/*
+// fetch
+file:null,
 api:"https://jsonplaceholder.typicode.com/albums",
 
 fetchData() {
-fetch(this.api).then((res) => res.json()).then((data) => {store.file = data})
+fetch(this.api).then((res) => res.json()).then((data) => {this.file = data})
 },
+*/
 
 
 
-get comput() { return this.w.theme + 'mode' },
+/*________________________________________________________________*/
+/*________________________________________________________________*/
+/*________________________________________________________________*/
+//testing
+
+
+
+
+
+
+
+
+
+
+
+  
   
 
 
+
+
+
+
+
+
+
+
+
+
+  
+/*________________________________________________________________*/
 watch(){
 
-this.fetchData();
-store.fav();
+//this.fetchData();
+this.lang();
+this.fav();
+
 
 },
-
+/*________________________________________________________________*/
 mounted() {
 	
-this.updateTheme();
 	
 },
+/*________________________________________________________________*/
 
-
-
-
-
-}).mount("#app");
+}).mount()
 </script>
 
 
 </head>
 
-<body>
-
-<div v-scope v-cloak id="app" v-effect="watch()" @vue:mounted="mounted">
-	
 
 
+
+
+
+
+
+
+
+<body :class="w.theme" v-cloak v-effect="watch()" @vue:mounted="mounted">
 
 <nav class="top fixed fill">
 
-<button class="circle transparent extra" data-ui="#drawer"><i>menu</i></button>
-<button v-show="w.url !== '/' " class="circle transparent extra" @click="url('/')"><i>arrow_back</i></button>
+<button class="circle transparent extra s" data-ui="#drawer"><i>menu</i></button>
 
- 	<div class="max"></div>
- 	<h5 v-once v-text="w.title"></h5>
+<h5 v-once v-text="w.title"></h5>
 
- 	<div class="max"></div>
+<div class="max"></div>
 
- 	<button class="chip circle transparent" @click="changeTheme()">
+<div class="field border suffix small">
+	<select v-model="w.lang">
+	  <option>english</option>
+	  <option>russian</option>
+	  <option>italian</option>
+	  <option>عربي</option>
+	</select>
+	<i>translate</i>
+</div>
+
+<button class="chip circle transparent" @click="changeTheme()">
  		<i v-show="w.theme !== 'dark'" class="page top active">light_mode</i>
- 		<i v-show="w.theme === 'dark'" class="page top active">dark_mode</i>
- 	</button>
+ 		<i v-show="w.theme === 'dark'" class="page bottom active">dark_mode</i>
+</button>
+ </nav>
 
+<nav class="top-round bottom">
 
- 	<button class="chip circle transparent m l" @click="url( '/page2' )">
- 		<i>notifications</i>
- 		<div class="badge">new</div>
- 	</button>
+ 	<a @click="url('/'); toursTag = null" :class="{active: w.url === '/' }">
+ 		<i>home</i><span>Home</span></a>
 
- 	<button class="chip circle transparent m l" data-ui="#menuDrop">
- 		<i>more_vert</i>
- 		<menu class="no-wrap left" id="menuDrop">
- 			<a class="row"><i>phone</i>Contact</a>
- 			<a class="row"><i>info</i>Info</a>
- 		</menu>
- 	</button>
+ 	<a @click="url( '/favorite' )" :class="{active: w.url === '/favorite' }">
+ 		<div class="badge" v-text="favorite.length"></div>
+ 	<i>favorite</i><span>Favorite</span>
+ 	</a>
 
- 	<dialog id="drawer" class="left no-padding">
- 		<nav class="drawer" data-ui="#drawer">
-
- 			<header>
- 				<nav>
- 					<h6 class="max lin" v-once v-text="w.title"></h6>
- 					<button class="transparent circle large"><i>close</i></button>
- 				</nav>
- 			</header>
-
- 			<a v-for="i in w.menu" @click="url(i.url,i.title)" :class="{active: w.url == i.url}">
- 				<i v-text="i.icon"></i><span :class="{max: i.tag}" v-text="i.title"></span>
- 				<b v-if="i.tag" v-text="i.tag"></b>
- 			</a>
-
- 		</nav>
- 	</dialog>
-
+ 	<a @click="url( '/booking' )" :class="{active: w.url === '/booking' }">
+ 	<div class="badge green">-10%</div>
+ 	<i>shopping_cart</i><span>Booking</span>
+ 	</a>
 
  </nav>
 
-<nav class="top-round bottom s">
+<dialog id="drawer" class="left no-padding">
+<nav class="drawer" data-ui="#drawer">
 
- 	<a @click="url( '/' )" :class="{active: w.url === '/' }">
- 		<i>home</i><span>Home</span>
- 	</a>
+<header><nav>
+<h6 class="max lin" v-once v-text="w.title"></h6>
+<button class="transparent circle large"><i>close</i></button>
+</nav></header>
 
- 	<a data-ui="#drawer"><i>widgets</i><span>Menu</span></a>
+<a @click="url('/','tags'); toursTag = null" :class="{active: toursTag === null && w.url === '/'}">
+<i>label</i><span class="max">All Tours</span>
+<b v-text="data.tours.length"></b>
+</a>
 
- 	<a @click="url( '/page3' )" :class="{active: w.url === '/page3' }">
- 		<div class="badge" v-text="store.favorite.length"></div>
- 		<i>favorite</i><span>Favorite</span>
- 	</a>
-
- 	<a @click="url( '/page2' )" :class="{active: w.url === '/page2' }">
- 		<div class="badge">-10%</div><i>notifications</i><span>Promotions</span>
- 	</a>
-
-
- 	<a @click="url( '/page4' )" :class="{active: w.url === '/page4' }">
- 		<i>info</i><span>Info</span>
- 	</a>
+<template v-for="tag in toursTags">
+<a @click="url('/','tags'); toursTag = tag" :class="{active: toursTag === tag && w.url === '/'}">
+<i>label</i><span class="max" v-text="tag + ' Tours'"></span>
+<b v-text="filteredTF(tag).length"></b>
+</a>
+</template>
 
  </nav>
+ </dialog>
 
 
 
@@ -489,10 +637,7 @@ this.updateTheme();
 
 
 
-
-
-<template v-if="w.url === '/'"><div class="page active left">
-
+<div v-show="w.url === '/'" class="page active left">
 
 <div class="fill medium-height middle-align center-align">
 	
@@ -511,116 +656,45 @@ this.updateTheme();
 </div>
 
 
-<div class="divider"></div>
-<div class="space"></div>
+<div class="top-padding" id="tours">
+	
 
 
+<nav class="scroll margin" id="tags">
+<a :class="[{fill: toursTag === null},'chip','link']" @click="toursTag = null">All</a>
 
+<template v-for="tag in toursTags">
+<a :class="[{fill: tag === toursTag},'chip','link']" v-text="tag" @click="toursTag = tag"></a>
+</template>
+</nav>
 
-
-
-
-<h1>our services</h1>
-		
+	
+<h2>{{toursTag}} Tours</h2> 
+   
 <div class="grid">
-	
-	<div class="s6 m6 l3" @click="url('/cars')">
-	<article class=" border">
-		<h5 class="link">Cars</h5>
-		<p>available Cars</p>
-	</article>
-
-
-	</div>
-	
-	<div class="s6 m6 l3" @click="url('/tours')">
-	<article class=" border">
-		<h5 class="link">Tours</h5>
-		<p>available tours</p>
-	</article>
-
-
-	</div>
-
-	</div>
-  
-  
-		
-		
-		
-		
-	
-</div></template>
-
-
-<template v-else-if="w.url === '/page2'"><div class="page active left">
- <h1>page 2</h1>
- 
- 
-  
-<a class="row wave"><i>mail</i><div class="max">Default 4</div></a>
- 
-<a class="row wave">
-	<i>mail</i>
-	<div class="max">Default 4</div>
-	<span class="badge circle none">3</span>
-</a>
-
-<a class="row wave">
-	<i>mail</i>
-	<div class="max">Default 4</div>
-	<span class="badge circle none">3</span>
-</a>
-
-<a class="row wave">
-	<i>mail</i>
-	<div class="max">Default 4</div>
-	<span class="badge circle none">3</span>
-</a>
-
-<a class="row wave">
-	<i>mail</i>
-	<div class="max">Default 4</div>
-	<span class="badge circle none">3</span>
-</a>
-
- 
- 
- 
-</div></template>
-
-
-<template v-else-if="w.url === '/page3'"><div class="page active left">
-
-
- <template v-if="store.favorite.length !== 0">
- 	
- 	<h2>Favorite Tours</h2>
- <div class="grid" id="tours">
-
- 	<div class="s12 m6 l4" v-for="(i,x) in store.favorite">
- 		
- 		
-<article class="no-padding border round large-elevate">
-	<img class="responsive top-round medium-elevate" :src="i.imgs[0]">
+<template v-for="(t,x) in filteredTours">
+<div class="s12 m6 l4">
+<article class="no-padding border round large-elevate" :id="'tour-'+x">
+	<img class="responsive top-round medium-elevate" :src="t.imgs[0]">
 
 	<div class="padding">
 		
 		<div class="row">
-		<h5 class="max" v-text="i.title"></h5>
+		<h5 class="max" v-text="t.title"></h5>
 		<i>schedule</i><span class="large-text">1 Hour</span>
-		<i>person</i><span class="green-text large-text" v-text="i.prices.A + '$'"></span>
+		<i>person</i>
+		<span class="green-text large-text" v-text="t.prices.A + '$'"></span>
 		</div>
 		
-		<p class="bottom-padding" v-text="i.description"></p>
+		<p class="bottom-padding" v-text="t.description"></p>
 		
 	
 <div class="row">
 		
 <button class="max border round small-elevate wave" :data-ui="'#tour' + x">Details</button>
 
-<label class="checkbox icon ">
-<input type="checkbox" v-model="store.favorite" :value="i">
+<label class="checkbox icon">
+<input type="checkbox" v-model="favorite" :value="t">
 <span class="extra">
 <i>favorite</i><i class="red-text fill">favorite</i>
 </span>
@@ -630,22 +704,20 @@ this.updateTheme();
 		
 	</div>
 </article>
-
+</div>
 
 <dialog class="modal scroll" :id="'tour' + x">
 
 <div class="medium-padding">
- 	<img class="responsive" :src="i.imgs[store.dImg]">
+<img class="responsive" :src="t.imgs[dImg]">
 </div>
  
  
- <div class="row scroll">
-<template v-for="(img,index) in i.imgs">
- <img :class="index === store.dImg ? 'no-opacity round extra' : 'extra medium-opacity' " :src="img" @click="store.dImg = index">
-</template>
+<div class="row scroll">
+<img v-for="(img,index) in t.imgs" :class="index === dImg ? 'no-opacity round extra' : 'extra medium-opacity' " :src="img" @click="dImg = index">
  </div>
  
- <div class="space"></div>
+<div class="space"></div>
  
 <div><table class="border">
 		<tr><td>Header</td><td>Header</td></tr>
@@ -655,55 +727,232 @@ this.updateTheme();
 	</tfoot>
 </table></div>
   
-<div><p v-text="i.description"></p></div>
+<div><p v-text="t.description"></p></div>
 
+<div>
+	
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>two way transportation</div></a>
 
 <a class="row wave"><i class="green-text">check_circle</i>
-<div>Some text here</div></a>
+<div>free cancilation</div></a>
 
 <a class="row wave"><i class="green-text">check_circle</i>
-<div>Some text here</div></a>
+<div>free wifi</div></a>
 
-<a class="row wave"><i class="green-text">check_circle</i>
-<div>Some text here</div></a>
-
-<a class="row wave"><i class="green-text">check_circle</i>
-<div>Some text here</div></a>
-
+</div>
 
 <footer class="fixed">
-	<nav class="row">
-  <button :data-ui="'#tour' + x" class="max border round link">
-  <i>phone</i><span>book now</span></button>
-  
-  <button @click="store.dImg = 0" :data-ui="'#tour' + x" class="transparent link">
-  <i>close</i><span>close</span></button>
-  </nav>
+<nav>
+<button :data-ui="'#tour' + x" @click="booking.tour = t.title; url('/booking')"><i>phone</i><span>Book Now</span></button>
+<button @click="dImg = 0" :data-ui="'#tour' + x" class="border"><i>close</i><span>close</span></button>
+</nav>
 </footer>
 
 </dialog>
 
+</template>
 </div>
 
+<div class="large-space"></div>
+<button v-if="toursTag !== null" class="responsive margin" @click="toursTag = null; url('/','tags')">show all Tours</button>
 
 </div>
- </template>
+
+</div>
+
+<template v-if="w.url === '/favorite'"><div class="page active left">
+
+
+ <template v-if="favorite.length !== 0">
+ 	
+ 	<h2>Favorite Tours</h2>
+ 	
+<div class="grid">
+  
+<template v-for="(t,x) in favorite">
+  
+<div class="s12 m6 l4">
+<article class="no-padding border round large-elevate">
+	<img class="responsive top-round medium-elevate" :src="t.imgs[0]">
+
+	<div class="padding">
+		
+		<div class="row">
+		<h5 class="max" v-text="t.title"></h5>
+		<i>schedule</i><span class="large-text">1 Hour</span>
+		<i>person</i>
+		<span class="green-text large-text" v-text="t.prices.A + '$'"></span>
+		</div>
+		
+		<p class="bottom-padding" v-text="t.description"></p>
+		
+	
+<div class="row">
+		
+<button class="max border round small-elevate wave" :data-ui="'#tourFavorite' + x">Details</button>
+
+
+<button class="circle transparent" @click="favorite.splice(x,1)">
+  <i class="red-text fill">favorite</i>
+</button>
+
+
+
+<!--
+<label class="checkbox icon">
+<input type="checkbox" v-model="favorite" :value="t">
+<span class="extra">
+<i>favorite</i>
+<i class="red-text fill">favorite</i>
+</span>
+</label>
+-->
+
+
+
+		
+</div>		
+		
+	</div>
+</article>
+</div>
+
+<dialog class="modal scroll" :id="'tourFavorite' + x">
+
+<div class="medium-padding">
+<img class="responsive" :src="t.imgs[dImg]">
+</div>
+ 
+ 
+<div class="row scroll">
+<img v-for="(img,index) in t.imgs" :class="index === dImg ? 'no-opacity round extra' : 'extra medium-opacity' " :src="img" @click="dImg = index">
+ </div>
+ 
+<div class="space"></div>
+ 
+<div><table class="border">
+		<tr><td>Header</td><td>Header</td></tr>
+		<tr><td>Cell</td><td>Cell</td></tr>
+		<tr><td>Cell</td><td>Cell</td></tr>
+		<tr><td>Footer</td><td>Footer</td></tr>
+	</tfoot>
+</table></div>
+  
+<div><p v-text="t.description"></p></div>
+
+<div>
+	
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>two way transportation</div></a>
+
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>free cancilation</div></a>
+
+<a class="row wave"><i class="green-text">check_circle</i>
+<div>free wifi</div></a>
+
+</div>
+
+<footer class="fixed">
+<nav>
+<button :data-ui="'#tour' + x" @click="booking.tour = t.title; url('/booking')"><i>phone</i><span>Book Now</span></button>
+<button @click="dImg = 0" :data-ui="'#tourFavorite' + x" class="border"><i>close</i><span>close</span></button>
+</nav>
+</footer>
+
+</dialog>
+
+</template>
+
+</div> 
+
+</template>
  
   
  <template v-else>
- <p>you dont have favorite</p>
+ 	<h2>empty</h2>
  </template>
  
  
 </div></template>
 
+<template v-if="w.url === '/booking'"><div class="page active left">
+ <h1>Booking</h1>
+ 
 
-<template v-else-if="w.url === '/page4'"><div class="page active left">
- <h1>page 4</h1>
- <div>content</div>
+
+<div class="grid">
+
+
+<!--
+<div class="padding margin s12 m6 l6">
+  <img class="responsive" :src="bookQr">
+</div>  
+-->
+  
+  
+  
+  
+  
+ <form @submit.prevent="window.open(waLink)" class="padding margin s12 m6 l6">
+ 	
+ 	
+ <div class="field label prefix border"><i>person</i>
+	<input required v-model="booking.name" type="text"><label>name</label>
+</div>
+
+
+<div class="field label suffix border">
+	<select required v-model="booking.tour">
+	<option v-for="t in data.tours" v-text="t.title"></option>
+	</select>
+	<label>Tour</label><i>arrow_drop_down</i>
+</div>
+ 	
+<div class="row">
+  
+<button @click="countDown()" type="button" class="chip circle transparent extra"><i>person_remove</i></button>
+
+<span class="bold large-text" v-text="booking.count"></span>
+<span v-if="booking.count === 1">Person</span>
+<span v-else>People</span>
+
+<button @click="countUp()" type="button" class="chip circle transparent extra"><i>person_add</i></button> 
+
+</div>
+
+  
+  <div class="field textarea label border">
+	<textarea v-model="booking.note"></textarea>
+	<label>Notes</label>
+</div>
+  
+  
+  
+<div class="row">
+ <button type="submit" value="submit" class="green"><i>send</i>whatsapp</button>
+<button @click="booking.count = 1" type="reset" value="Reset" class="border"><i>close</i> clear</button> 
+</div>
+
+
+
+ </form>
+ 
+</div>
+ 
 </div></template>
 
+</main>
 
+
+
+
+</body>
+
+</html>
+
+<!--
 <template v-else-if="w.url === '/cars'"><div class="page active left">
  
 	
@@ -711,7 +960,7 @@ this.updateTheme();
    
 <div class="grid" id="cars">
 
-<div class="s12 m6 l4" v-for="(i,x) in store.cars">
+<div class="s12 m6 l4" v-for="(i,x) in data.cars">
  		
   <article class="no-padding medium-elevate">
    <div class="grid no-space">
@@ -829,123 +1078,22 @@ this.updateTheme();
 
 
 </div></template>
+-->
 
 
-<template v-else-if="w.url === '/tours'"><div class="page active left" id="tours">
-	
-	
-<h2>Available Tours</h2> 
-   
- <div class="grid">
+
+<!--
+
+<button @click="data.tours.push(data.obj)"></button>
 
 
-<div class="s12 m6 l4" v-for="(i,x) in store.tours">
- 		
-<article class="no-padding border round large-elevate">
-	<img class="responsive top-round medium-elevate" :src="i.imgs[0]">
-
-	<div class="padding">
-		
-		<div class="row">
-		<h5 class="max" v-text="i.title"></h5>
-		<i>schedule</i><span class="large-text">1 Hour</span>
-		<i>person</i>
-		<span class="green-text large-text" v-text="i.prices.A + '$'"></span>
-		</div>
-		
-		<p class="bottom-padding" v-text="i.description"></p>
-		
-	
-<div class="row">
-		
-<button class="max border round small-elevate wave" :data-ui="'#tour' + x">Details</button>
-
-<label class="checkbox icon ">
-<input type="checkbox" v-model="store.favorite" :value="i">
-<span class="extra">
-<i>favorite</i><i class="red-text fill">favorite</i>
-</span>
-</label>
-		
-</div>		
-		
-	</div>
-</article>
-
-
-<dialog class="modal scroll" :id="'tour' + x">
-
-<div class="medium-padding">
- 	<img class="responsive" :src="i.imgs[store.dImg]">
-</div>
- 
- 
- <div class="row scroll">
-<template v-for="(img,index) in i.imgs">
- <img :class="index === store.dImg ? 'no-opacity round extra' : 'extra medium-opacity' " :src="img" @click="store.dImg = index">
-</template>
- </div>
- 
- <div class="space"></div>
- 
-<div><table class="border">
-		<tr><td>Header</td><td>Header</td></tr>
-		<tr><td>Cell</td><td>Cell</td></tr>
-		<tr><td>Cell</td><td>Cell</td></tr>
-		<tr><td>Footer</td><td>Footer</td></tr>
-	</tfoot>
-</table></div>
+    loopArray() {
+      for (let i = 0; i < this.items.length; i++) {
+        console.log(this.items[i]);
+        
+      }
+    }
   
-<div><p v-text="i.description"></p></div>
+-->
 
 
-<a class="row wave"><i class="green-text">check_circle</i>
-<div>Some text here</div></a>
-
-<a class="row wave"><i class="green-text">check_circle</i>
-<div>Some text here</div></a>
-
-<a class="row wave"><i class="green-text">check_circle</i>
-<div>Some text here</div></a>
-
-<a class="row wave"><i class="green-text">check_circle</i>
-<div>Some text here</div></a>
-
-
-<footer class="fixed">
-	<nav class="row">
-  <button :data-ui="'#tour' + x" class="max border round link">
-  <i>phone</i><span>book now</span></button>
-  
-  <button @click="store.dImg = 0" :data-ui="'#tour' + x" class="transparent link">
-  <i>close</i><span>close</span></button>
-  </nav>
-</footer>
-
-</dialog>
-
-
-</div>
-
-
-</div>
-
-
-</div></template>
-
-
-<template v-else><div class="page active left center-align padding">
- <h1>404</h1>
- <p>page not found!</p>
-</div></template>
-
-
-</main>
-
-
-</div><!--app-->
-
-
-</body>
-
-</html>
